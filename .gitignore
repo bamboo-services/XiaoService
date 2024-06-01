@@ -16,9 +16,10 @@ manifest/output/
 temp/
 temp.yaml
 bin
-**/config/config.yaml
 
-### 自定义拒绝上传内容 ###d
-internal/dao/
-internal/model/do/
-internal/model/entity/
+### 自定义排除 ###
+.logs/
+/internal/dao/
+/internal/model/entity/
+/internal/model/do/
+/resource/sql/

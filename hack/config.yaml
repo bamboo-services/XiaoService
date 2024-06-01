@@ -2,6 +2,12 @@
 # CLI tool, only in development environment.
 # https://goframe.org/pages/viewpage.action?pageId=3673173
 gfcli:
+  gen:
+    dao:
+      - link: "pgsql:xiaoservice:xiaoservice@tcp(127.0.0.1:5432)/xiaoservice"
+        removePrefix: "fy_"
+        gJsonSupport: true
+        jsonCase: "Snake"
   docker:
     build: "-a amd64 -s linux -p temp -ew"
     tagPrefixes:

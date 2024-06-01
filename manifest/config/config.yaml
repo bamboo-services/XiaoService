@@ -1,0 +1,19 @@
+server:
+  address: ":7777"
+  openapiPath: "/api.json"
+  logger:
+    path: ".logs"
+    level: "all"
+    stdout: true
+database:
+  default:
+    host: "localhost"
+    port: "5432"
+    user: "xiaoservice"
+    pass: "xiaoservice"
+    name: "xiaoservice"
+    type: "postgres"
+redis:
+  default:
+    address: "localhost:6379"
+    db:      1
