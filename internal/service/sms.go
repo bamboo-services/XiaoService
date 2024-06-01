@@ -34,7 +34,7 @@ type (
 		//
 		// # 返回
 		//   - err		错误(error)
-		CheckIfAuthorizationIsAvailable(ctx context.Context) (err error)
+		CheckIfAuthorizationIsAvailable(ctx context.Context, authorizationCode string) (err error)
 		// GetSmsAuthorization
 		//
 		// # 获取短信验证码授权码

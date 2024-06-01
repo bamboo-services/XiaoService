@@ -36,7 +36,7 @@ import (
 //
 // # 返回
 //   - err		错误(error)
-func (s *sSms) CheckIfAuthorizationIsAvailable(ctx context.Context) (err error) {
+func (s *sSms) CheckIfAuthorizationIsAvailable(ctx context.Context, authorizationCode string) (err error) {
 	g.Log().Noticef(ctx, "[LOGIC] 检查授权是否可用 [CheckIfAuthorizationIsAvailable]")
 	getRequest := g.RequestFromCtx(ctx)
 	// 获取基本信息
@@ -73,15 +73,17 @@ func (s *sSms) CheckIfAuthorizationIsAvailable(ctx context.Context) (err error) 
 					)
 					_, _ = g.Redis().HIncrBy(ctx, "sms:auth:"+makeCacheUUID.String(), "frequency", 1)
 				} else {
+					_, _ = g.Redis().ExpireAt(ctx, "sms:auth:"+makeCacheUUID.String(), gtime.Now().Add(time.Second*900).Time)
 					err = berror.NewError(bcode.OperationFailed, "发送次数过多，请稍后再试")
 				}
 			} else {
-				// 重新设置有效期
-				_, _ = g.Redis().ExpireAt(ctx, "sms:auth:"+makeCacheUUID.String(), gtime.Now().Add(time.Second*900).Time)
-				err = berror.NewError(bcode.OperationFailed,
-					"发送时间间隔过短，请稍后再试",
-					"剩余 "+strconv.FormatInt(60-timeLeft, 10)+" 秒",
-				)
+				if authorizationCode != redisSmsAuthorization.SendingUUID {
+					// 重新设置有效期
+					err = berror.NewError(bcode.OperationFailed,
+						"发送时间间隔过短，请稍后再试",
+						"剩余 "+strconv.FormatInt(60-timeLeft, 10)+" 秒",
+					)
+				}
 			}
 		}
 	} else {

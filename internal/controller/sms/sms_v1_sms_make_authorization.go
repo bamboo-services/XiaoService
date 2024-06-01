@@ -27,7 +27,7 @@ func (c *ControllerV1) SmsMakeAuthorization(
 	req *v1.SmsMakeAuthorizationReq,
 ) (res *v1.SmsMakeAuthorizationRes, err error) {
 	g.Log().Noticef(ctx, "[CONTROL] 生成短信验证码授权码 [SmsMakeAuthorization]")
-	err = sms.New().CheckIfAuthorizationIsAvailable(ctx)
+	err = sms.New().CheckIfAuthorizationIsAvailable(ctx, req.AuthorizationCode)
 	if err != nil {
 		return nil, err
 	}
