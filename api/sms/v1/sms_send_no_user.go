@@ -23,7 +23,7 @@ import "github.com/gogf/gf/v2/frame/g"
 //   - AuthorizationCode		授权码(string)
 //   - Phone					手机号(string)
 type SmsSendNoUserReq struct {
-	g.Meta            `path:"/api/v1/sms/send" method:"Post" summary:"向非注册用户发送短信验证码" tags:"短信验证码控制器"`
+	g.Meta            `path:"/api/v1/sms/send/no-user" method:"Post" summary:"向非注册用户发送短信验证码" tags:"短信验证码控制器"`
 	AuthorizationCode string `json:"authorization_code" v:"required|length:6,6#请输入授权码|授权码长度为6位"`
 	Phone             string `json:"phone" v:"required|length:11,11#请输入手机号|手机号长度为11位"`
 }

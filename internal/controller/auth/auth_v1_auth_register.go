@@ -19,6 +19,19 @@ import (
 	"XiaoService/api/auth/v1"
 )
 
+// AuthRegister
+//
+// # 用户注册
+//
+// 用户注册，用于用户注册，需要传递用户名、手机号、密码、短信验证码；
+//
+// # 参数
+//   - ctx		上下文(context.Context)
+//   - req		请求(*v1.AuthRegisterReq)
+//
+// # 返回
+//   - res		响应(*v1.AuthRegisterRes)
+//   - err		错误(error)
 func (c *ControllerV1) AuthRegister(ctx context.Context, req *v1.AuthRegisterReq) (res *v1.AuthRegisterRes, err error) {
 	return nil, gerror.NewCode(gcode.CodeNotImplemented)
 }

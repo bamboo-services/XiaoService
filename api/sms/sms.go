@@ -21,5 +21,7 @@ import (
 )
 
 type ISmsV1 interface {
+	SmsMakeAuthorization(ctx context.Context, req *v1.SmsMakeAuthorizationReq) (res *v1.SmsMakeAuthorizationRes, err error)
+	SmsSendHasUser(ctx context.Context, req *v1.SmsSendHasUserReq) (res *v1.SmsSendHasUserRes, err error)
 	SmsSendNoUser(ctx context.Context, req *v1.SmsSendNoUserReq) (res *v1.SmsSendNoUserRes, err error)
 }

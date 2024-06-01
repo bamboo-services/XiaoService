@@ -8,19 +8,17 @@
  * ***********************************************************
  */
 
-package main
+package sms
 
-import (
-	_ "XiaoService/internal/packed"
+import "XiaoService/internal/service"
 
-	_ "XiaoService/internal/logic"
-	_ "github.com/gogf/gf/contrib/nosql/redis/v2"
+type sSms struct {
+}
 
-	"github.com/gogf/gf/v2/os/gctx"
+func init() {
+	service.RegisterSms(New())
+}
 
-	"XiaoService/internal/cmd"
-)
-
-func main() {
-	cmd.Main.Run(gctx.GetInitCtx())
+func New() *sSms {
+	return &sSms{}
 }

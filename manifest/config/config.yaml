@@ -5,6 +5,10 @@ server:
     path: ".logs"
     level: "all"
     stdout: true
+logger:
+  path: ".logs"
+  level: "all"
+  stdout: true
 database:
   default:
     host: "localhost"

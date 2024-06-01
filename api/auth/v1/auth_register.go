@@ -24,11 +24,11 @@ import "github.com/gogf/gf/v2/frame/g"
 //   - Password		密码(string)
 //   - SmsCode		短信验证码(string)
 type AuthRegisterReq struct {
-	g.Meta   `path:"/api/v1/auth/register" method:"Post"`
-	Username string `json:"username" v:"required|length:6,30#请输入用户名|用户名长度为:min到:max位"`
+	g.Meta   `path:"/api/v1/auth/register" method:"Post" summary:"用户注册" tags:"用户控制器"`
+	Username string `json:"username" v:"required|length:6,30#请输入用户名|用户名长度为 6-30 位"`
 	Phone    string `json:"phone" v:"required|length:11,11#请输入手机号|手机号长度为11位"`
-	Password string `json:"password" v:"required|length:6,30#请输入密码|密码长度为:min到:max位"`
-	SmsCode  string `json:"sms_code" v:"required|regex:^[0-9]{6,10}#请输入短信验证码|短信验证码最少为6位最多为10位"`
+	Password string `json:"password" v:"required|length:6,30#请输入密码|密码长度为 6-30 位"`
+	SmsCode  string `json:"sms_code" v:"required|regex:^[0-9]{6,10}#请输入短信验证码|短信验证码为 6-10 位"`
 }
 
 // AuthRegisterRes

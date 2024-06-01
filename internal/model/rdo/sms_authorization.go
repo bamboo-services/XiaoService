@@ -8,19 +8,22 @@
  * ***********************************************************
  */
 
-package main
+package rdo
 
-import (
-	_ "XiaoService/internal/packed"
+import "github.com/gogf/gf/v2/os/gtime"
 
-	_ "XiaoService/internal/logic"
-	_ "github.com/gogf/gf/contrib/nosql/redis/v2"
-
-	"github.com/gogf/gf/v2/os/gctx"
-
-	"XiaoService/internal/cmd"
-)
-
-func main() {
-	cmd.Main.Run(gctx.GetInitCtx())
+// RedisSmsAuthorization
+//
+// # Redis 短信授权码
+//
+// Redis 短信授权码，用于存储短信授权码的内容；
+//
+// # 参数
+//   - LastSendAt		最后发送时间(*gtime.Time)
+//   - Frequency		频率(int)
+//   - SendingUUID		发送 UUID(string)
+type RedisSmsAuthorization struct {
+	LastSendAt  *gtime.Time `json:"last_send_at"`
+	Frequency   int64       `json:"frequency"`
+	SendingUUID string      `json:"sending_uuid"`
 }

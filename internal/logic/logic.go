@@ -8,19 +8,12 @@
  * ***********************************************************
  */
 
-package main
+// ==========================================================================
+// Code generated and maintained by GoFrame CLI tool. DO NOT EDIT.
+// ==========================================================================
+
+package logic
 
 import (
-	_ "XiaoService/internal/packed"
-
-	_ "XiaoService/internal/logic"
-	_ "github.com/gogf/gf/contrib/nosql/redis/v2"
-
-	"github.com/gogf/gf/v2/os/gctx"
-
-	"XiaoService/internal/cmd"
+	_ "XiaoService/internal/logic/sms"
 )
-
-func main() {
-	cmd.Main.Run(gctx.GetInitCtx())
-}

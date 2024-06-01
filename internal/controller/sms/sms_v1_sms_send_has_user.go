@@ -8,19 +8,17 @@
  * ***********************************************************
  */
 
-package main
+package sms
 
 import (
-	_ "XiaoService/internal/packed"
+	"context"
 
-	_ "XiaoService/internal/logic"
-	_ "github.com/gogf/gf/contrib/nosql/redis/v2"
+	"github.com/gogf/gf/v2/errors/gcode"
+	"github.com/gogf/gf/v2/errors/gerror"
 
-	"github.com/gogf/gf/v2/os/gctx"
-
-	"XiaoService/internal/cmd"
+	"XiaoService/api/sms/v1"
 )
 
-func main() {
-	cmd.Main.Run(gctx.GetInitCtx())
+func (c *ControllerV1) SmsSendHasUser(ctx context.Context, req *v1.SmsSendHasUserReq) (res *v1.SmsSendHasUserRes, err error) {
+	return nil, gerror.NewCode(gcode.CodeNotImplemented)
 }
